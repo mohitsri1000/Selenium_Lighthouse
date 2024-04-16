@@ -39,7 +39,7 @@ await flow.startTimespan();
 //wait for information that all steps are done
 await new Promise((resolve, reject) => {
     const timeout = setTimeout(() => {
-      reject(new Error('Czas oczekiwania upłynął. Brak odpowiedzi.'));
+      reject(new Error('Reached Timeout'));
       rl.close();
     }, timeoutValue);
   
@@ -48,7 +48,7 @@ await new Promise((resolve, reject) => {
       if (answer === 'FINISH') {
         resolve();
       } else {
-        reject(new Error('Wpisano niepoprawne polecenie.'));
+        reject(new Error('Wrong Command'));
       }
       rl.close();
     });
